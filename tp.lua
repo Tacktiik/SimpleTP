@@ -59,15 +59,13 @@ end
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(2)
-		local pos = GetEntityCoords(GetPlayerPed(-1), true)
-		
+		local pos = GetEntityCoords(GetVehiclePedIsIn(GetPlayerPed(-1), 0), true)
+
 		for k, j in pairs(TeleportFromTo) do
-		
-			--msginf(k .. " " .. tostring(j.positionFrom.x), 15000) -- MSG INF
+
 			if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 150.0) then
-				DrawMarker(1, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.501, 117,202,93,255, 0, 0, 0,0)
+				DrawMarker(1, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 0.99, 0, 0, 0, 0, 0, 0, 3.5, 3.5, 0.5001, 0, 255, 0, 105, 0, 0, 2, 2, 0, 0, 0)
 				if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 5.0)then
-					--Drawing.draw3DText(j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1.100, j.positionFrom.nom, 1, 0.2, 0.1, 255, 255, 255, 215) -- TEXTE 3D
 					if(Vdist(pos.x, pos.y, pos.z, j.positionFrom.x, j.positionFrom.y, j.positionFrom.z) < 1.0)then
 						ClearPrints()
 						DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ~b~".. j.positionFrom.nom,1, 1, 0.5, 0.8, 0.9, 255, 255, 255, 255)
@@ -75,17 +73,16 @@ Citizen.CreateThread(function()
 						if IsControlJustPressed(1, 38) then
 							DoScreenFadeOut(1000)
 							Citizen.Wait(2000)
-							SetEntityCoords(GetPlayerPed(-1), j.positionTo.x, j.positionTo.y, j.positionTo.z - 1)
+							SetEntityCoords(GetVehiclePedIsIn(GetPlayerPed(-1), 0), j.positionTo.x, j.positionTo.y, j.positionTo.z - 1)
 							DoScreenFadeIn(1000)
 						end
 					end
 				end
 			end
-			
+
 			if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 150.0) then
-				DrawMarker(1, j.positionTo.x, j.positionTo.y, j.positionTo.z - 1, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.501, 117,202,93,255, 0, 0, 0,0)
+				DrawMarker(1, j.positionTo.x, j.positionTo.y, j.positionTo.z - 0.99, 0, 0, 0, 0, 0, 0, 3.5, 3.5, 0.5001, 0, 255, 0, 105, 0, 0, 2, 2, 0, 0, 0)
 				if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 5.0)then
-					--Drawing.draw3DText(j.positionTo.x, j.positionTo.y, j.positionTo.z - 1.100, j.positionTo.nom, 1, 0.2, 0.1, 255, 255, 255, 215) -- TEXTE 3D
 					if(Vdist(pos.x, pos.y, pos.z, j.positionTo.x, j.positionTo.y, j.positionTo.z) < 1.0)then
 						ClearPrints()
 						DisplayHelpText("Appuyez sur ~INPUT_PICKUP~ pour ~r~".. j.positionTo.nom,1, 1, 0.5, 0.8, 0.9, 255, 255, 255, 255)
@@ -93,7 +90,7 @@ Citizen.CreateThread(function()
 						if IsControlJustPressed(1, 38) then
 							DoScreenFadeOut(1000)
 							Citizen.Wait(2000)
-							SetEntityCoords(GetPlayerPed(-1), j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1)
+							SetEntityCoords(GetVehiclePedIsIn(GetPlayerPed(-1), 0), j.positionFrom.x, j.positionFrom.y, j.positionFrom.z - 1)
 							DoScreenFadeIn(1000)
 						end
 					end
